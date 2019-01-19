@@ -1,0 +1,34 @@
+body{
+    background: #AAFFA9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #11FFBD, rgb(121, 238, 119));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #11FFBD, rgb(104, 236, 102)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.time{
+    font-size: 64px;
+    color: #FFDED5;
+    font-family:'Arial,Hiragino Sans GB','Microsoft Yahei',"WenQuanYi Micro Hei",SimSun,Tahoma,Helvetica,STHeiti;
+}
+.button{
+    background-color: rgb(233, 104, 107);
+    font-family: 微软雅黑;
+    text-align: center;
+    color: azure;
+    padding: 16px 32px;
+    font-size: 18px;
+    border: none;
+}
+.slogan{
+    font-size: 32px;
+    font-family:'Arial,Hiragino Sans GB','Microsoft Yahei',"WenQuanYi Micro Hei",SimSun,Tahoma,Helvetica,STHeiti;
+}
+.slogan2{
+    font-size: 20px;
+    font-family:'Arial,Hiragino Sans GB','Microsoft Yahei',"WenQuanYi Micro Hei",SimSun,Tahoma,Helvetica,STHeiti;
+    background: grey;
+    color: #F5FFFA;
+    width: 400px;
+    position: absolute;
+    bottom: 100px;
+}
+

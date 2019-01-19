@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>focous</title>
+    <script>
+        var thisURL = decodeURI(document.URL);   // 获取当前页面的 url, 用decodeURI() 解码
+        time = thisURL.split('?')[1];
+        work = time.split('&')[0]
+        rest = time.split('&')[1]
+        work = work.split('=')[1]
+        rest = rest.split('=')[1]
+        var m = work
+        var s = 0
+        var settime = setInterval(function () {
+            showtime();
+        }, 1000);
+        function showtime() {
+            document.getElementById('m').innerHTML = m + "分";
+            document.getElementById('s').innerHTML = s + "秒";
+            if (s == 0 && m != 0) {
+                m = m - 1;
+                s = 59
+            }
+            else
+                if (m != 0)
+                    s = s - 1;
+            if (m == 0) {
+            }
+
+            if (m == 0 && s >= 0) {   //当时间为0分1秒时，暂停
+                clearInterval(settime);
+
+            }
+        }
+        // clearInterval(settime);
+
+        function stopCount() {
+            m = 0;
+            s = 0;
+        }
+    </script>
+</head>
+<body onload="showtime()">
+    <link rel="stylesheet" type="text/css" href="counttime.css">
+    <div>
+        <h1 class="slogan">该是你大放异彩的时候了!</h1>
+        <span id="m" class="time">00</span>
+        <span id="s" class="time">00</span>
+        <input type="button" value="停止" id="end" class="button" onClick="stopCount()">
+        <img src="bg8.png" style="float:right" height="500" width="354" />
+        <p class="slogan2">停歇是弱者的表现！</p>
+    </div>
+    </div>
+</body>
+
+</html>

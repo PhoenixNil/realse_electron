@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置</title>
+</head>
+<body style="-webkit-app-region: drag">
+    <link rel="stylesheet" type="text/css" href="Set.css">
+    <div class="form">
+        <form>
+            <div class="title">⏳工作时间</div>
+            <select class="select" id="worktime" name="work">
+                <option value="15" style="background-color:white">15分钟</option>
+                <option value="30" style="background-color:white">30分钟</option>
+                <option value="45" style="background-color:white">45分钟</option>
+                <option value="60" style="background-color:white">1小时</option>
+                <option value="120" style="background-color:white">2小时</option>
+                <option value="180" style="background-color:white">3小时</option>
+                <option value="240" style="background-color:white">4小时</option>
+                <option value="300" style="background-color:white">5小时</option>
+            </select>
+            <br>
+            <div class="title">休息时间</div>
+            <select class="select" id="resttime" name="rest">
+                <option value="5" style="background-color:white">5分钟</option>
+                <option value="10" style="background-color:white">10分钟</option>
+                <option value="15" style="background-color:white">15分钟</option>
+                <option value="30" style="background-color:white">30分钟</option>
+                <option value="60" style="background-color:white">1小时</option>
+                <option value="120" style="background-color:white">2小时</option>
+                <option value="300" style="background-color:white">5小时</option>
+                <option value="1440" style="background-color:white">24小时</option>
+            </select>
+            <br><br>
+            <input type="button" class="submit" id="submit" value="Submit" onclick="toPage2()">
+            <script>function toPage2() {
+                    workindex = document.getElementById("worktime").selectedIndex
+                    restindex = document.getElementById("resttime").selectedIndex
+                    worktime = document.getElementById("worktime").value
+                    resttime = document.getElementById("resttime").value
+                    window.location.href = encodeURI("counttime.html?work=" + worktime + "&" + "rest=" + resttime);
+                }</script>
+        </form>
+    </div>
+    <h1>设定时间,使你更专注</h1>
+    <div class="content">
+        <ul class="color">
+            <li id="greenbt" class="green"></li>
+            <li id="bluebt" class="blue"></li>
+            <li id="redbt" class="red"></li>
+            <li id="purplebt" class="purple"></li>
+            <li id="cyanbt" class="cyan"></li>
+            <li id="yellowbt" class="yellow"></li>
+            <li id="pinkbt" class="pink"></li>
+        </ul>
+        <script src="set.js"></script>
+</body>
+</html>

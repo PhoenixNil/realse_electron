@@ -1,0 +1,66 @@
+body{
+    /* background-image: url(bg5.jpg); */
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.button{
+    border: none;
+}
+.slogan{
+    text-align:center;
+    font-family:'Arial,Hiragino Sans GB','Microsoft Yahei',"WenQuanYi Micro Hei",SimSun,Tahoma,Helvetica,STHeiti;
+    font-size: 64px;
+    color: #39C3D8;
+    font-weight: 300; 
+    height: 350px;
+    line-height:250px
+    
+}
+.mainbutton {
+    background-color: transparent;
+    border: none;
+    color: #FFFACD;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family:'Arial,Hiragino Sans GB','Microsoft Yahei',"WenQuanYi Micro Hei",SimSun,Tahoma,Helvetica,STHeiti;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 7.5px;
+    outline: none;
+}
+.mainbutton:active {
+    background: #4568DC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+.minbt{
+    /* float: right; */
+    background-color: dodgerblue;
+    border: none;
+    background: url("最小化2.png");
+    width: 30px;
+    height: 30px;
+    outline:none;
+    position: absolute;
+    top: 0px;
+    right: 32px;
+}
+.closebt{
+    /* float: right; */
+    background: url("关闭.svg");
+    border: none;
+    width: 30px;
+    height: 30px;
+    outline: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
