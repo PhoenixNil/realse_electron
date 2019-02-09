@@ -1,60 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset=utf8>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <title>设置</title>
 </head>
-<body style="-webkit-app-region: drag">
+
+<body>
     <link rel="stylesheet" type="text/css" href="Set.css">
-    <div class="form">
-        <form>
-            <div class="title">⏳工作时间</div>
-            <select class="select" id="worktime" name="work">
-                <option value="15" style="background-color:white">15分钟</option>
-                <option value="30" style="background-color:white">30分钟</option>
-                <option value="45" style="background-color:white">45分钟</option>
-                <option value="60" style="background-color:white">1小时</option>
-                <option value="120" style="background-color:white">2小时</option>
-                <option value="180" style="background-color:white">3小时</option>
-                <option value="240" style="background-color:white">4小时</option>
-                <option value="300" style="background-color:white">5小时</option>
-            </select>
-            <br>
-            <div class="title">休息时间</div>
-            <select class="select" id="resttime" name="rest">
-                <option value="5" style="background-color:white">5分钟</option>
-                <option value="10" style="background-color:white">10分钟</option>
-                <option value="15" style="background-color:white">15分钟</option>
-                <option value="30" style="background-color:white">30分钟</option>
-                <option value="60" style="background-color:white">1小时</option>
-                <option value="120" style="background-color:white">2小时</option>
-                <option value="300" style="background-color:white">5小时</option>
-                <option value="1440" style="background-color:white">24小时</option>
-            </select>
-            <br><br>
-            <input type="button" class="submit" id="submit" value="Submit" onclick="toPage2()">
-            <script>function toPage2() {
-                    workindex = document.getElementById("worktime").selectedIndex
-                    restindex = document.getElementById("resttime").selectedIndex
-                    worktime = document.getElementById("worktime").value
-                    resttime = document.getElementById("resttime").value
-                    window.location.href = encodeURI("counttime.html?work=" + worktime + "&" + "rest=" + resttime);
-                }</script>
-        </form>
+    <div id="app">
+        <v-app id="inspire">
+            <v-container fluid>
+                <div style="max-width: 570px">
+                    <v-card height="500px">
+                        <v-container fluid grid-list-lg>
+                            <v-layout row wrap>
+                                <v-flex xs12>
+                                    <v-toolbar :color="color" dark>
+                                        <v-toolbar-title>Setting Time</v-toolbar-title>
+                                        <v-spacer></v-spacer>
+                                        <v-icon>build</v-icon>
+                                    </v-toolbar>
+                                    <v-flex xs12>
+                                        <v-card color="azure" class="white--text">
+                                            <v-layout row>
+                                                <v-flex xs12>
+                                                    <v-img src="bg11.jpg" height="300px" contain></v-img>
+                                                </v-flex>
+                                            </v-layout>
+                                            <v-card-actions>
+                                                <v-btn flat :color="color">
+                                                    <v-icon>favorite</v-icon>like
+                                                </v-btn>
+                                                <v-btn flat :color="color">
+                                                    <v-icon>thumb_down</v-icon>hate
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-flex>
+                            </v-layout>
+                        </v-container>
+                    </v-card>
+                </div>
+                <div style="position: absolute; bottom: 300px;right: 0px;">
+                    <v-card max-width="300px" :color="color">
+                        <v-layout align-end justify-end column />
+                        <v-flex>
+                            <v-select v-model="select" :items="worktimes" item-text="work" menu-props="auto"
+                                label="select" hide-details prepend-icon="query_builder" single-line return-object>
+                            </v-select>
+                        </v-flex>
+                        <v-flex>
+                            <v-select v-model="select2" :items="resttimes" item-text="rest" menu-props="auto"
+                                label="select2" hide-details prepend-icon="camera" single-line return-object>
+                            </v-select>
+                        </v-flex>
+                        </v-layout>
+                        <v-flex>
+                            <v-layout align-end column />
+                            <div>
+                                <v-btn color="error" id="submit" onclick="toPage2()">submit</v-btn>
+                            </div>
+                            <v-layout>
+                        </v-flex>
+                    </v-card>
+                </div>
+            </v-container>
+            <p hidden id="worktime">{{select.work}}</p>
+            <v-progress-linear :indeterminate="true" :color="color"></v-progress-linear>
+            <p hidden id="resttime">{{select2.rest}}</p>
+            <v-card height="100px">
+                <v-bottom-nav :active.sync="bottomNav" :color="color" :value="true" absolute dark shift>
+                    <v-btn dark>
+                        <span>blue-grey</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+
+                    <v-btn dark>
+                        <span>teal</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+
+                    <v-btn dark>
+                        <span>brown</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+
+                    <v-btn dark>
+                        <span>sky-blue</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+                    <v-btn dark>
+                        <span>Cream cake</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+                    <v-btn dark>
+                        <span>original</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+                </v-bottom-nav>
+            </v-card>
+        </v-app>
     </div>
-    <h1>设定时间,使你更专注</h1>
-    <div class="content">
-        <ul class="color">
-            <li id="greenbt" class="green"></li>
-            <li id="bluebt" class="blue"></li>
-            <li id="redbt" class="red"></li>
-            <li id="purplebt" class="purple"></li>
-            <li id="cyanbt" class="cyan"></li>
-            <li id="yellowbt" class="yellow"></li>
-            <li id="pinkbt" class="pink"></li>
-        </ul>
-        <script src="set.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+    <script src="set.js"></script>
+    <script>
+        require('./renderer.js')
+    </script>
 </body>
+
 </html>

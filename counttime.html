@@ -1,59 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<style>
+    p {
+        text-align: center;
+        font-size: 40px;
+        margin-top: 0px;
+    }
+</style>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>focous</title>
-    <script>
-        var thisURL = decodeURI(document.URL);   // 获取当前页面的 url, 用decodeURI() 解码
-        time = thisURL.split('?')[1];
-        work = time.split('&')[0]
-        rest = time.split('&')[1]
-        work = work.split('=')[1]
-        rest = rest.split('=')[1]
-        var m = work
-        var s = 0
-        var settime = setInterval(function () {
-            showtime();
-        }, 1000);
-        function showtime() {
-            document.getElementById('m').innerHTML = m + "分";
-            document.getElementById('s').innerHTML = s + "秒";
-            if (s == 0 && m != 0) {
-                m = m - 1;
-                s = 59
-            }
-            else
-                if (m != 0)
-                    s = s - 1;
-            if (m == 0) {
-            }
-
-            if (m == 0 && s >= 0) {   //当时间为0分1秒时，暂停
-                clearInterval(settime);
-
-            }
-        }
-        // clearInterval(settime);
-
-        function stopCount() {
-            m = 0;
-            s = 0;
-        }
-    </script>
+    <meta charset=utf8>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
+
 <body onload="showtime()">
     <link rel="stylesheet" type="text/css" href="counttime.css">
-    <div>
-        <h1 class="slogan">该是你大放异彩的时候了!</h1>
-        <span id="m" class="time">00</span>
-        <span id="s" class="time">00</span>
-        <input type="button" value="停止" id="end" class="button" onClick="stopCount()">
-        <img src="bg8.png" style="float:right" height="500" width="354" />
-        <p class="slogan2">停歇是弱者的表现！</p>
+    <div id="app">
+        <v-app id="inspire">
+            <v-toolbar fixed app color="indigo" dark>
+                <v-toolbar-title>
+                    停止是弱者的体现
+                </v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn flat href="https://github.com/PhoenixNil">
+                    <v-icon>fab fa-github</v-icon>反馈
+                </v-btn>
+                <div>
+                    <v-dialog v-model="dialog" width="400">
+                        <v-btn flat slot="activator">
+                            <v-icon>help</v-icon>帮助
+                        </v-btn>
+
+                        <v-card>
+                            <v-card-text>
+                                设置时间，确定要做的事情
+                            </v-card-text>
+
+                            <v-divider></v-divider>
+                        </v-card>
+                    </v-dialog>
+                </div>
+                </v-btn>
+                <v-btn flat>
+                    <v-icon color='pink'>favorite</v-icon>感谢
+                </v-btn>
+                <v-btn flat href="https://www.glasstower.top/">
+                    <v-icon>filter_frames</v-icon>关于
+                </v-btn>
+            </v-toolbar>
+            <v-spacer></v-spacer>
+
+            <v-content>
+                <v-flex xs16 sm6 offset-sm3>
+                    <v-carousel hide-controls>
+                        <v-carousel-item v-for="(img,i) in imgs" :key="i" :src="img.src">
+                        </v-carousel-item>
+                    </v-carousel>
+                    <v-card id="rest">
+                    </v-card>
+                </v-flex>
+                <v-container fluid>
+                    <div>
+                        <p id="demo"></p>
+                    </div>
+                    <div class="text-xs-center">
+                        <div>
+                            <v-btn color="orange darken-2" dark Onclick="backSetURL()">
+                                <v-icon dark left>arrow_back</v-icon>Back
+                            </v-btn>
+
+                            <v-btn color="red" dark onClick="stopCount()">
+                                <v-icon dark>stop</v-icon>stop
+                            </v-btn>
+                            <v-btn color="green" dark onClick="startCount()">
+                                <v-icon>cached</v-icon>restart
+                            </v-btn>
+                        </div>
+                    </div>
+                </v-container>
+            </v-content>
+        </v-app>
     </div>
-    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+    <script src="index2.js"></script>
+    <script>
+        require('./renderer.js')
+    </script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@ document.getElementById('closebt').addEventListener('click', () => {
 document.getElementById('minbt').addEventListener('click', () => {
     ipcRenderer.send('hide-window');
 });
-// //向主进程发送
+//向主进程发送
 document.getElementById('mainbt').addEventListener('click', () => {
     ipcRenderer.send('two-show');
 });

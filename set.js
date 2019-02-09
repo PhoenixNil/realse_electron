@@ -1,35 +1,33 @@
-var bgcolor1 = document.getElementById('greenbt')
-var bgcolor2 = document.getElementById('bluebt')
-var bgcolor3 = document.getElementById('redbt')
-var bgcolor4 = document.getElementById('purplebt')
-var bgcolor5 = document.getElementById('cyanbt')
-var bgcolor6 = document.getElementById('yellowbt')
-var bgcolor7 = document.getElementById('pinkbt')
-var color1 = "#82c8a0"
-var color2 = "#6698cb"
-var color3 = "#fa5a5a"
-var color4 = "#cb99c5"
-var color5 = "#7fccde"
-var color6 = "#f0d264"
-var color7 = "#FFB6C1"
-bgcolor1.onclick = function () {
-    document.bgColor = color1
+
+function toPage2() {
+    worktime = document.getElementById("worktime").innerHTML
+    resttime = document.getElementById("resttime").innerHTML
+    window.location.href = encodeURI("counttime.html?work=" + worktime + "&" + "rest=" + resttime);
 }
-bgcolor2.onclick = function () {
-    document.bgColor = color2
-}
-bgcolor3.onclick = function () {
-    document.bgColor = color3
-}
-bgcolor4.onclick = function () {
-    document.bgColor = color4
-}
-bgcolor5.onclick = function () {
-    document.bgColor = color5
-}
-bgcolor6.onclick = function () {
-    document.bgColor = color6
-}
-bgcolor7.onclick = function () {
-    document.bgColor = color7
-}
+new Vue({
+    el: '#app',
+    data() {
+        return {
+            select: { work: '1hour' },
+            worktimes: [
+                { work: '30minutes' }, { work: '1hour' }, { work: '2hours' }, { work: '3hours' }, { work: '4hours' }, { work: '5hours' }, { work: '24hours' }
+            ],
+            select2: { rest: '15minutes' },
+            resttimes: [
+                { rest: '1minute' }, { rest: '3minutes' }, { rest: '10minutes' }, { rest: '15minutes' }, { rest: '30minutes' }, { rest: '45minutes' }, { rest: '1hour' }, { rest: '2hour' }, { rest: '3hour' }, { rest: '5hour' }
+            ],
+            bottomNav: 3
+        }
+    },
+    computed: {
+        color() {
+            switch (this.bottomNav) {
+                case 0: return 'blue-grey'
+                case 1: return 'teal'
+                case 2: return 'grey'
+                case 3: return '#29B6F6'
+                case 4: return '#EEDD82'
+            }
+        }
+    }
+})

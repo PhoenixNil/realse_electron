@@ -10,7 +10,7 @@ let SetWindow
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({ width: 1000, height: 562, frame: false, resizable: false })
-  SetWindow = new BrowserWindow({ width: 800, height: 672, resizable: false })
+  SetWindow = new BrowserWindow({ width: 900, height: 770, resizable: false })
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
@@ -19,7 +19,7 @@ function createWindow() {
   Menu.setApplicationMenu(null)
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  // SetWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -70,4 +70,7 @@ ipcMain.on('hide-window', () => {
 ipcMain.on('two-show', function () {
   mainWindow.hide();
   SetWindow.show();
+})
+ipcMain.on('BackSet', function () {
+  SetWindow.loadFile('SetWindow.html')
 })
