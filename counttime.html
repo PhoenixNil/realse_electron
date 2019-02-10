@@ -14,18 +14,19 @@
     <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>focus</title>
 </head>
 
 <body onload="showtime()">
     <link rel="stylesheet" type="text/css" href="counttime.css">
     <div id="app">
         <v-app id="inspire">
-            <v-toolbar fixed app color="indigo" dark>
+            <v-toolbar fixed app :color="color" dark>
                 <v-toolbar-title>
                     停止是弱者的体现
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
-                <v-btn flat href="https://github.com/PhoenixNil">
+                <v-btn flat id="issue">
                     <v-icon>fab fa-github</v-icon>反馈
                 </v-btn>
                 <div>
@@ -44,34 +45,60 @@
                     </v-dialog>
                 </div>
                 </v-btn>
-                <v-btn flat>
+                <v-btn flat href="https://i.loli.net/2019/02/10/5c5fd6a90dbd0.jpg">
                     <v-icon color='pink'>favorite</v-icon>感谢
                 </v-btn>
-                <v-btn flat href="https://www.glasstower.top/">
+                <v-btn flat id="about">
                     <v-icon>filter_frames</v-icon>关于
                 </v-btn>
             </v-toolbar>
             <v-spacer></v-spacer>
 
             <v-content>
-                <v-flex xs16 sm6 offset-sm3>
+                <v-flex xs16>
                     <v-carousel hide-controls>
                         <v-carousel-item v-for="(img,i) in imgs" :key="i" :src="img.src">
                         </v-carousel-item>
                     </v-carousel>
-                    <v-card id="rest">
+                    <v-card height="90px">
+                        <v-list>
+                            <v-list-tile>
+                                <v-list-tile-content>
+                                    <v-list-tile-title id="song">Menuet D major</v-list-tile-title>
+                                    <v-list-tile-sub-title id="singer">Mozart</v-list-tile-sub-title>
+                                </v-list-tile-content>
+                                <v-list-tile-action :class="{ 'mx-5': $vuetify.breakpoint.mdAndUp }">
+                                    <audio controls style=" width:300px;height:30px;" onended="NextSong()" id="music"
+                                        src="Menuet D Major.mp3">
+                                    </audio>
+                                </v-list-tile-action>
+                                <span id="rest"></span>
+                                <v-menu open-on-hover top offset-y>
+                                    <v-btn slot="activator" class="buttoncolor" dark>
+                                        <v-icon dark color="pink lighten-5">library_music</v-icon>播放列表
+                                    </v-btn>
+                                    <v-list>
+                                        <v-list-tile v-for="(item, index) in items" :key="index" @click="">
+                                            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                                        </v-list-tile>
+                                    </v-list>
+                                </v-menu>
+                                <v-btn flat icon :color="color" onclick="NextSong()">
+                                    <v-icon>skip_next</v-icon>
+                                </v-btn>
+                            </v-list-tile>
+                        </v-list>
                     </v-card>
                 </v-flex>
                 <v-container fluid>
                     <div>
-                        <p id="demo"></p>
+                        <p id="demo" style="height:30px;"></p>
                     </div>
                     <div class="text-xs-center">
                         <div>
                             <v-btn color="orange darken-2" dark Onclick="backSetURL()">
                                 <v-icon dark left>arrow_back</v-icon>Back
                             </v-btn>
-
                             <v-btn color="red" dark onClick="stopCount()">
                                 <v-icon dark>stop</v-icon>stop
                             </v-btn>
